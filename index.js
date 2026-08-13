@@ -12,6 +12,9 @@ mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.error('MongoDB connection error:', err));
 
+const authRoutes = require('./routes/auth');
+app.use('/api/auth', authRoutes);
+
 // Rotas
 app.get('/', (req, res) => {
   res.send('Hello, API Node here WORKING e Banco de Dados Configurado!');
