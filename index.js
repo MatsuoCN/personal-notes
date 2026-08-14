@@ -15,6 +15,9 @@ mongoose.connect(process.env.MONGO_URI)
 const authRoutes = require('./routes/auth');
 app.use('/api/auth', authRoutes);
 
+const notasRoutes = require('./routes/notas');
+app.use('/api/notas', notasRoutes);
+
 // Rotas
 app.get('/', (req, res) => {
   res.send('Hello, API Node here WORKING e Banco de Dados Configurado!');
