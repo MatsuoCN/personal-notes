@@ -21,4 +21,14 @@ router.post('/', autenticar, async (req, res) => {
     }
 });
 
+router.get('/', autenticar, async (req, res) => {
+    try {
+        const notas = await Nota.find({ usuario: req.usuario.id });
+        res.status(200).json(notas);
+    } catch (erro) {
+        console.error('Erro ao buscar notas:', erro);
+        res.status(500).json({ message: 'Erro ao buscar notas' });
+    }
+});
+
 module.exports = router;
