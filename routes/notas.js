@@ -8,7 +8,7 @@ router.post('/', autenticar, async (req, res) => {
         const { titulo, conteudo } = req.body;
 
         const novaNota = new Nota({
-            usuarioID: req.usuario.id,
+            usuario: req.usuario.id,
             titulo,
             conteudo
         });
