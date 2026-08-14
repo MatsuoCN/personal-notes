@@ -18,4 +18,4 @@ usuario: {
 }, {
 timestamps: true
 });
-module.exports = mongoose.model('Nota', notaSchema);
+module.exports = mongoose.model('Nota', usuarioSchema);
