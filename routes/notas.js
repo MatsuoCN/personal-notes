@@ -31,19 +31,16 @@ router.get('/', autenticar, async (req, res) => {
     }
 });
 
-// Rota PUT para atualizar uma nota existente
 router.put('/:id', autenticar, async (req, res) => {
   try {
     const { titulo, conteudo } = req.body;
     
-    // Procura a nota pelo ID dela, garantindo que o dono é o usuário logado
     const nota = await Nota.findOne({ _id: req.params.id, usuario: req.usuario.id });
     
     if (!nota) {
       return res.status(404).json({ message: 'Anotação não encontrada ou não pertence a você.' });
     }
 
-    // Atualiza os dados
     nota.titulo = titulo;
     nota.conteudo = conteudo;
     await nota.save();
@@ -55,10 +52,10 @@ router.put('/:id', autenticar, async (req, res) => {
   }
 });
 
-// Rota DELETE para apagar uma nota
+
 router.delete('/:id', autenticar, async (req, res) => {
   try {
-    // Procura e deleta a nota em um único passo
+    
     const nota = await Nota.findOneAndDelete({ _id: req.params.id, usuario: req.usuario.id });
     
     if (!nota) {
