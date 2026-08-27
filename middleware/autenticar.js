@@ -14,6 +14,6 @@ module.exports = function (req, res, next) {
         req.usuario = verificado;
         next();
     } catch (erro) {
-        res.status(400).json({ message: 'Token inválido ou expirado.' });
+        res.status(401).json({ message: 'Token inválido ou expirado.' });
     }
 };
